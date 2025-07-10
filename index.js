@@ -263,6 +263,8 @@ async function updateLessonSpaces(orderedLessons) {
             }
 
             const newSpaces = lessonInDb.spaces - lesson.quantity
+
+            const updatedSpaces = Math.max(0, newSpaces)
           }
           catch{
             
