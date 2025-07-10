@@ -272,6 +272,8 @@ async function updateLessonSpaces(orderedLessons) {
               { $set: { spaces: updatedSpaces } }
             )
 
+            console.log(`✅ Updated lesson "${lessonInDb.subject}": ${lessonInDb.spaces} → ${updatedSpaces} spaces`)
+
           }
           catch{
             
