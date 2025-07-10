@@ -243,3 +243,7 @@ app.put('/lessons/:id', async (req, res) => {
     })
   }
 })
+
+async function updateLessonSpaces(orderedLessons) {
+  
+}
