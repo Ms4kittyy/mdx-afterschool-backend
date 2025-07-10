@@ -278,8 +278,15 @@ async function updateLessonSpaces(orderedLessons) {
           catch (lessonError) {
             console.error(`Error updating lesson ${lesson.id}:`, lessonError.message)
           }
-      }
-  }catch {
-
+    }
+    console.log('Finished updating lesson spaces')
+  }
+  catch(error) {
+    console.error('Error in updateLessonSpaces:', error)
+    throw error
   }
 }
+
+app.get('/orders', async (req, res) => {
+
+})
