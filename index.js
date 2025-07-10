@@ -265,6 +265,13 @@ async function updateLessonSpaces(orderedLessons) {
             const newSpaces = lessonInDb.spaces - lesson.quantity
 
             const updatedSpaces = Math.max(0, newSpaces)
+
+
+            await lessonsCollection.updateOne(
+              { _id: new ObjectId(lesson.id) },
+              { $set: { spaces: updatedSpaces } }
+            )
+
           }
           catch{
             
