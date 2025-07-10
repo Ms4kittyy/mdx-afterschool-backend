@@ -261,6 +261,8 @@ async function updateLessonSpaces(orderedLessons) {
               console.warn(`⚠️ Lesson not found: ${lesson.id}`)
               continue
             }
+
+            const newSpaces = lessonInDb.spaces - lesson.quantity
           }
           catch{
             
