@@ -174,3 +174,72 @@ app.post('/orders', async (req, res) => {
     })
   }
 })
+
+app.put('/lessons/:id', async (req, res) => {
+  try {
+    // Get lesson ID from URL parameter
+    const lessonId = req.params.id
+    
+    // Get update data from request body
+    const updateData = req.body
+    
+    console.log(`📝 Updating lesson ${lessonId}:`, updateData)
+    
+    // Validate that we have data to update
+    if (!updateData || Object.keys(updateData).length === 0) {
+      return res.status(400).json({
+        error: 'No update data provided',
+        message: 'Request body must contain fields to update'
+      })
+    }
+    
+    // Get the lessons collection
+    const lessonsCollection = db.collection('lessons')
+    
+    // Update the lesson by ID
+    const result = await lessonsCollection.updateOne(
+      { _id: new ObjectId(lessonId) },  // Find lesson by ID
+      { $set: updateData }              // Update with new data
+    )
+    
+    // Check if lesson was found and updated
+    if (result.matchedCount === 0) {
+      return res.status(404).json({
+        error: 'Lesson not found',
+        message: `No lesson found with ID: ${lessonId}`
+      })
+    }
+    
+    if (result.modifiedCount === 0) {
+      return res.status(200).json({
+        message: 'No changes made to lesson',
+        lessonId: lessonId
+      })
+    }
+    
+    console.log('✅ Lesson updated successfully')
+    
+    // Return success response
+    res.status(200).json({
+      success: true,
+      message: 'Lesson updated successfully',
+      modifiedCount: result.modifiedCount
+    })
+    
+  } catch (error) {
+    console.error('Error updating lesson:', error)
+    
+    // Handle invalid ObjectId error
+    if (error.name === 'BSONTypeError') {
+      return res.status(400).json({
+        error: 'Invalid lesson ID format',
+        message: 'The provided lesson ID is not valid'
+      })
+    }
+    
+    res.status(500).json({ 
+      error: 'Failed to update lesson',
+      message: error.message 
+    })
+  }
+})
