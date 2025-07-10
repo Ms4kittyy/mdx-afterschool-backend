@@ -247,6 +247,26 @@ app.put('/lessons/:id', async (req, res) => {
 async function updateLessonSpaces(orderedLessons) {
   try {
     console.log('🔄 Updating lesson spaces after order...')
-    
+
+    const lessonsCollection = db.collection('lessons')
+
+    for(const lesson of orderedLessons) {
+          try {
+            // Find the lesson in database
+            const lessonInDb = await lessonsCollection.findOne({ 
+              _id: new ObjectId(lesson.id) 
+            })
+            
+            if (!lessonInDb) {
+              console.warn(`⚠️ Lesson not found: ${lesson.id}`)
+              continue
+            }
+          }
+          catch{
+            
+          }
+      }
+  }catch {
+
   }
 }
