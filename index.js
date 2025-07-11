@@ -301,3 +301,5 @@ app.get('/orders', async (req, res) => {
     timestamp: new Date().toISOString()
   })
 })
+
+app.use((error, req, res, next) => {
