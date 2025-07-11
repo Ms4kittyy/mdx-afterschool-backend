@@ -291,6 +291,13 @@ app.get('/orders', async (req, res) => {
   res.json({
     message: '🎓 After School Classes API is running!',
     version: '1.0.0',
+    endpoints: [
+      'GET /lessons - Get all lessons',
+      'GET /search?query=term - Search lessons',
+      'POST /orders - Create new order',
+      'PUT /lessons/:id - Update lesson',
+      'GET /orders - Get all orders'
+    ]
   })
 
 })
