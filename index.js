@@ -326,7 +326,17 @@ app.use('*', (req, res) => {
   })
 })
 
-
+process.on('SIGINT', async () => {
+  console.log('\n🛑 Shutting down server...')
+  try {
+    await client.close()
+    console.log('📁 Database connection closed')
+    process.exit(0)
+  } catch (error) {
+    console.error('Error during shutdown:', error)
+    process.exit(1)
+  }
+})
 
 
 
