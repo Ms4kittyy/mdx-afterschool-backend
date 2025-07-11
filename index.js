@@ -297,7 +297,7 @@ app.get('/orders', async (req, res) => {
       'POST /orders - Create new order',
       'PUT /lessons/:id - Update lesson',
       'GET /orders - Get all orders'
-    ]
+    ],
+    timestamp: new Date().toISOString()
   })
-
 })
