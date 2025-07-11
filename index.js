@@ -288,5 +288,10 @@ async function updateLessonSpaces(orderedLessons) {
 }
 
 app.get('/orders', async (req, res) => {
+  res.json({
+    message: '🎓 After School Classes API is running!',
+    version: '1.0.0',
+    
+  })
 
 })
