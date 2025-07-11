@@ -1,4 +1,4 @@
-const express = require('require')
+const express = require('express')
 const cors = require('cors')
 const { MongoClient, ObjectId } = require('mongodb')
 
