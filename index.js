@@ -312,7 +312,9 @@ app.use((error, req, res, next) => {
 
 app.use('*', (req, res) => {
   console.log(`❓ Route not found: ${req.method} ${req.orignalUrl}`)
-  
+  res.status(404).json({
+    
+  })
 
 })
 
