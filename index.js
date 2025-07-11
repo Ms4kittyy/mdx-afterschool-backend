@@ -313,10 +313,19 @@ app.use((error, req, res, next) => {
 app.use('*', (req, res) => {
   console.log(`❓ Route not found: ${req.method} ${req.orignalUrl}`)
   res.status(404).json({
-    
+    error: 'Route not found',
+    message: `The route ${req.method} ${req.originalUrl} does not exist`,
+    availableRoutes: [
+      'GET /',
+      'GET /lessons',
+      'GET /search',
+      'POST /orders',
+      'PUT /lessons/:id',
+      'GET /orders'
+    ]
   })
-
 })
+
 
 
 
