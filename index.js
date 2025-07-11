@@ -310,4 +310,12 @@ app.use((error, req, res, next) => {
   })
 })
 
+app.use('*', (req, res) => {
+  
+
+
+})
+
+
+
 
