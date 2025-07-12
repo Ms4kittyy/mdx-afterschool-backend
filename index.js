@@ -41,7 +41,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
 
-const mongoUrl = "mongodb://localhost:27017" || 'mongodb+srv://your-username:your-password@cluster0.mongodb.net/'
+const mongoUrl = 'mongodb+srv://daffakaluogbo:1r60grZlCl40woCr@cluster0.mcyjztf.mongodb.net/?retryWrites=true&w=majority&appName=cluster0'
 const client = new MongoClient(mongoUrl)
 
 let db
